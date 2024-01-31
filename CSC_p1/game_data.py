@@ -25,10 +25,14 @@ class Item:
     """An item in our text adventure game world.
 
     Instance Attributes:
-        - # TODO
+        - name: name of the item
+        - start: start position of the item on the map
+        - target_points: amount of points given when item is used successfully
 
     Representation Invariants:
-        - # TODO
+        - name != ''
+        - start >= 0
+        - target_points > 0
     """
     name: str
     start: int
