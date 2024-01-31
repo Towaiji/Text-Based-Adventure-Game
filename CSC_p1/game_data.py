@@ -118,12 +118,13 @@ class Player:
     A Player in the text advanture game.
 
     Instance Attributes:
-        - map_spot:
+        - map_spot: position of the player on the map
         - inventory: the inventory of the
-        - victory:
+        - victory: shows whether the player has won the game or not
 
     Representation Invariants:
-        - # TODO
+        - map_spot >= 0
+
     """
     map_spot: int
     inventory: list
