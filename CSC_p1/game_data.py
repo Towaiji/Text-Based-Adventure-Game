@@ -54,10 +54,13 @@ class Location:
     """A location in our text adventure game world.
 
     Instance Attributes:
-        - # TODO
+        - x:
 
     Representation Invariants:
-        - # TODO
+        - x >= 0
+        - y >= 0
+        - b_desc != ''
+        - f_desc != ''
     """
     x: int
     y: int
