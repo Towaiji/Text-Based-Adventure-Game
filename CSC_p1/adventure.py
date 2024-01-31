@@ -23,15 +23,46 @@ from game_data import World, Item, Location, Player
 
 # Note: You may add helper functions, classes, etc. here as needed
 
+
+def handle_action(world, player, choice):
+    """Handles the players choices"""
+    # Extract the current location of the player
+    location = world.get_location(player.map_spot)
+
+    if choice == "look":
+        # Display the full description of the location
+        print(location.f_desc)
+    elif choice == "inventory":
+        # Display the player's inventory
+        print("Inventory:", player.inventory)
+    elif choice == "score":
+        # Display the player's score
+        # Assuming 'score' is an attribute of Player class
+        print(f"Score: {player.score}")
+    elif choice == "quit":
+        # Exit the game loop
+        print("Quitting the game.")
+        player.victory = True  # Assuming ending the game sets 'victory' to True
+    elif choice.startswith("go "):
+        # Move the player to a new location if possible
+        direction = choice[3:]
+        # Implement the logic to update player's location based on the direction
+        # ...
+    # Add more actions as needed based on your game design
 # Note: You may modify the code below as needed; the following starter template are just suggestions
+
+
 if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
-    p = Player(0, 0)  # set starting location of player; you may change the x, y coordinates here as appropriate
+    p = Player(1)  # set starting location of player; you may change the x, y coordinates here as appropriate
 
     menu = ["look", "inventory", "score", "quit", "back"]
 
     while not p.victory:
-        location = w.get_location(p.x, p.y)
+        location = w.get_location(p.map_spot)
+
+        choice = input("\nEnter action: ").strip().lower()
+        handle_action(w, p, location, choice)
 
         # TODO: ENTER CODE HERE TO PRINT LOCATION DESCRIPTION
         # Depending on whether or not it's been visited before,
