@@ -21,6 +21,60 @@ This file is Copyright (c) 2024 CSC111 Teaching Team
 from typing import Optional, TextIO
 
 
+<<<<<<< Updated upstream
+=======
+class Location:
+    """A location in our text adventure game world.
+
+    Instance Attributes:
+        - x:
+
+    Representation Invariants:
+        - x >= 0
+        - y >= 0
+        - b_desc != ''
+        - f_desc != ''
+    """
+
+    def __init__(self) -> None:
+        """Initialize a new location.
+
+        # TODO Add more details here about the initialization if needed
+        """
+
+        # NOTES:
+        # Data that could be associated with each Location object:
+        # a position in the world map,
+        # a brief description,
+        # a long description,
+        # a list of available commands/directions to move,
+        # items that are available in the location,
+        # and whether the location has been visited before.
+        # Store these as you see fit, using appropriate data types.
+        #
+        # This is just a suggested starter class for Location.
+        # You may change/add parameters and the data available for each Location object as you see fit.
+        #
+        # The only thing you must NOT change is the name of this class: Location.
+        # All locations in your game MUST be represented as an instance of this class.
+
+        # TODO: Complete this method
+
+    def available_actions(self):
+        """
+        Return the available actions in this location.
+        The actions should depend on the items available in the location
+        and the x,y position of this location on the world map.
+        """
+
+        # NOTE: This is just a suggested method
+        # i.e. You may remove/modify/rename this as you like, and complete the
+        # function header (e.g. add in parameters, complete the type contract) as needed
+
+        # TODO: Complete this method, if you'd like or remove/replace it if you're not using it
+
+
+>>>>>>> Stashed changes
 class Item:
     """An item in our text adventure game world.
 
