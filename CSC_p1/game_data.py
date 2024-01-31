@@ -71,14 +71,13 @@ class Location:
         - b_desc != ''
         - f_desc != ''
     """
-    x: int
-    y: int
+    map_spot: int
     b_desc: str
     f_desc: str
     items: list[Item]
     visited: bool
 
-    def __init__(self, x: int, y: int, b_desc: str, f_desc: str, items: list[Item], visited: bool) -> None:
+    def __init__(self, map_spot, b_desc: str, f_desc: str, items: list[Item], visited: bool) -> None:
         """Initialize a new location.
 
         # TODO Add more details here about the initialization if needed
@@ -94,12 +93,11 @@ class Location:
         # The only thing you must NOT change is the name of this class: Location.
         # All locations in your game MUST be represented as an instance of this class.
 
-        self.x = x
-        self.y = y
+        self.map_spot = map_spot
         self.b_desc = b_desc
         self.f_desc = f_desc
         self.items = items
-        self.visited = visited
+        self.visited = False
 
     def available_actions(self):
         """
@@ -134,10 +132,6 @@ class Player:
         """
         Initializes a new Player at position (x, y).
         """
-
-        # NOTES:
-        # This is a suggested starter class for Player.
-        # You may change these parameters and the data available for the Player object as you see fit.
 
         self.x = x
         self.y = y
