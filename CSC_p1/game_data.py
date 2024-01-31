@@ -56,7 +56,10 @@ class Location:
     """A location in our text adventure game world.
 
     Instance Attributes:
-        - x:
+        - x: the x position on the map
+        - y: the y position on the map
+        - b_desc: brief description of the location, given after each subsequent visit
+        - f_desc: full description of the location, given at the first time entering the location
 
     Representation Invariants:
         - x >= 0
