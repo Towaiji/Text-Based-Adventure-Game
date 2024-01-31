@@ -199,15 +199,50 @@ class World:
 
     def load_locations(self, location_data: TextIO) -> dict[int, Location]:
         """Load the game locations from a file."""
+        locations = {}
+        content = location_data.readlines()
+        i = 0
+        while i < len(content):
+            line = content[i].strip()
+            if line.startswith("LOCATION"):
+                loc_id = int(line.split()[1])
+                points = int(content[i + 1].strip())
+                b_desc = content[i + 2].strip()
+                f_desc_lines = []
+                j = i + 3
+                while not content[j].strip().startswith("END"):
+                    f_desc_lines.append(content[j].strip())
+                    j += 1
+                f_desc = "\n".join(f_desc_lines)
+                items = []  # Handle after we agree on items
+                locations[loc_id] = Location(loc_id, b_desc, f_desc, items, False)
+                i = j  # Move to the next location number
+            i += 1
+        return locations
 
     def load_items(self, items_data: TextIO) -> dict[str, Item]:
         """Load the game items from a file."""
+        items = {}
+        for line in items_data:
+            parts = line.strip().split()
+            loc_id = int(parts[0])
+            points = int(parts[1])
+            target_points = int(parts[2])
+            name = " ".join(parts[3:])
+            item = Item(name, loc_id, target_points)
+            items[name] = item
+            # Assign the item to its starting location
+            if loc_id in self.locations:
+                self.locations[loc_id].items.append(item)
+        return items
 
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
-    def get_location(self, x: int, y: int) -> Optional[Location]:
+    def get_location(self, map_spot: int) -> Optional[Location]:
         """Return Location object associated with the coordinates (x, y) in the world map, if a valid location exists at
          that position. Otherwise, return None. (Remember, locations represented by the number -1 on the map should
          return None.)
         """
-
+        if map_spot == -1:
+            return None
+        return self.locations.get(map_spot)
         # TODO: Complete this method as specified. Do not modify any of this function's specifications.
