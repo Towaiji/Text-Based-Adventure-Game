@@ -30,8 +30,11 @@ class Item:
     Representation Invariants:
         - # TODO
     """
+    name: str
+    start: int
+    target_points: int
 
-    def __init__(self, name: str, start: int, target: int, target_points: int) -> None:
+    def __init__(self, name: str, start: int, target_points: int) -> None:
         """Initialize a new item.
         """
 
@@ -46,7 +49,6 @@ class Item:
 
         self.name = name
         self.start_position = start
-        self.target_position = target
         self.target_points = target_points
 
 
@@ -77,12 +79,6 @@ class Location:
 
         # NOTES:
         # Data that could be associated with each Location object:
-        # a position in the world map, V
-        # a brief description, V
-        # a long description, V
-        # a list of available commands/directions to move,
-        # items that are available in the location, V
-        # and whether the location has been visited before.
         # Store these as you see fit, using appropriate data types.
         #
         # This is just a suggested starter class for Location.
@@ -90,6 +86,7 @@ class Location:
         #
         # The only thing you must NOT change is the name of this class: Location.
         # All locations in your game MUST be represented as an instance of this class.
+
         self.x = x
         self.y = y
         self.b_desc = b_desc
