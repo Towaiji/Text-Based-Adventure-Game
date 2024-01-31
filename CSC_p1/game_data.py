@@ -145,7 +145,8 @@ class World:
 
     Instance Attributes:
         - map: a nested list representation of this world's map
-        - # TODO add more instance attributes as needed; do NOT remove the map attribute
+        - locations: a dictionary mapping location numbers to Location objects
+        - items: a dictionary mapping item names to Item objects
 
     Representation Invariants:
         - # TODO
@@ -170,6 +171,8 @@ class World:
 
         # The map MUST be stored in a nested list as described in the load_map() function's docstring below
         self.map = self.load_map(map_data)
+        self.locations = self.load_locations(location_data)
+        self.items = self.load_items(items_data)
 
         # NOTE: You may choose how to store location and item data; create your own World methods to handle these
         # accordingly. The only requirements:
@@ -188,10 +191,17 @@ class World:
 
         Return this list representation of the map.
         """
+        map_list = []
+        for line in map_data:
+            row = [int(num) for num in line.strip().split()]
+            map_list.append(row)
+        return map_list
 
-        # TODO: Complete this method as specified. Do not modify any of this function's specifications.
+    def load_locations(self, location_data: TextIO) -> dict[int, Location]:
+        """Load the game locations from a file."""
 
-    # TODO: Add methods for loading location data and item data (see note above).
+    def load_items(self, items_data: TextIO) -> dict[str, Item]:
+        """Load the game items from a file."""
 
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def get_location(self, x: int, y: int) -> Optional[Location]:
