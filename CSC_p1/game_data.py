@@ -121,6 +121,10 @@ class Player:
     Representation Invariants:
         - # TODO
     """
+    x: int
+    y: int
+    inventory: list
+    victory: bool
 
     def __init__(self, x: int, y: int) -> None:
         """
