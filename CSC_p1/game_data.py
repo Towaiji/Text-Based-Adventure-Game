@@ -118,23 +118,23 @@ class Player:
     A Player in the text advanture game.
 
     Instance Attributes:
-        - # TODO
+        - map_spot:
+        - inventory: the inventory of the
+        - victory:
 
     Representation Invariants:
         - # TODO
     """
-    x: int
-    y: int
+    map_spot: int
     inventory: list
     victory: bool
 
-    def __init__(self, x: int, y: int) -> None:
+    def __init__(self, map_spot) -> None:
         """
         Initializes a new Player at position (x, y).
         """
 
-        self.x = x
-        self.y = y
+        self.map_spot = map_spot
         self.inventory = []
         self.victory = False
 
