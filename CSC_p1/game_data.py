@@ -36,9 +36,10 @@ class Item:
     """
     name: str
     start: int
+    point: int
     target_points: int
 
-    def __init__(self, name: str, start: int, target_points: int) -> None:
+    def __init__(self, name: str, start: int, points: int, target_points: int) -> None:
         """Initialize a new item.
         """
 
@@ -53,6 +54,7 @@ class Item:
 
         self.name = name
         self.start_position = start
+        self.points = points
         self.target_points = target_points
 
 
@@ -133,16 +135,18 @@ class Player:
     """
     x: int
     y: int
+    points: int
     inventory: list
     victory: bool
 
-    def __init__(self, x, y) -> None:
+    def __init__(self,  x: int, y: int) -> None:
         """
         Initializes a new Player at position (x, y).
         """
 
         self.x = x
         self.y = y
+        self.points = 0
         self.inventory = []
         self.victory = False
 
@@ -240,7 +244,7 @@ class World:
             points = int(parts[1])
             target_points = int(parts[2])
             name = " ".join(parts[3:])
-            item = Item(name, item_loc_id, target_points)
+            item = Item(name, item_loc_id, points, target_points)
             items[name] = item
             # Assign the item to its starting location
             if item_loc_id in self.locations:
