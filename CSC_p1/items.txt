@@ -1,7 +1,6 @@
 1 10 5 Cheat Sheet
 1 10 5 Lucky Pencil
 1 10 5 Tcard
-
 1 10 5 Key
 1 10 5 Money
 1 10 5 Kit Kat

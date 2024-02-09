@@ -72,12 +72,15 @@ class Location:
         - f_desc != ''
     """
     map_spot: int
+    points: int
+    avail_action: list[str]
     b_desc: str
     f_desc: str
     items: list[Item]
     visited: bool
 
-    def __init__(self, map_spot, b_desc: str, f_desc: str, items: list[Item], visited: bool) -> None:
+    def __init__(self, map_spot, points: int, avail_action: list, b_desc: str, f_desc: str, items: list[Item],
+                 visited: bool) -> None:
         """Initialize a new location.
 
         # TODO Add more details here about the initialization if needed
@@ -94,6 +97,8 @@ class Location:
         # All locations in your game MUST be represented as an instance of this class.
 
         self.map_spot = map_spot
+        self.points = points
+        self.avail_action = avail_action
         self.b_desc = b_desc
         self.f_desc = f_desc
         self.items = items
@@ -212,15 +217,16 @@ class World:
             if line.startswith("LOCATION"):
                 loc_id = int(line.split()[1])
                 points = int(content[i + 1].strip())
-                b_desc = content[i + 2].strip()
+                pos_dir = content[i + 2].strip().split()
+                b_desc = content[i + 3].strip()
                 f_desc_lines = []
-                j = i + 3
+                j = i + 4
                 while not content[j].strip().startswith("END"):
                     f_desc_lines.append(content[j].strip())
                     j += 1
                 f_desc = "\n".join(f_desc_lines)
                 items = []  # Handle after we agree on items
-                locations[loc_id] = Location(loc_id, b_desc, f_desc, items, False)
+                locations[loc_id] = Location(loc_id, points, pos_dir, b_desc, f_desc, items, False)
                 i = j  # Move to the next location number
             i += 1
         return locations
@@ -230,15 +236,15 @@ class World:
         items = {}
         for line in items_data:
             parts = line.strip().split()
-            loc_id = int(parts[0])
+            item_loc_id = int(parts[0])
             points = int(parts[1])
             target_points = int(parts[2])
             name = " ".join(parts[3:])
-            item = Item(name, loc_id, target_points)
+            item = Item(name, item_loc_id, target_points)
             items[name] = item
             # Assign the item to its starting location
-            if loc_id in self.locations:
-                self.locations[loc_id].items.append(item)
+            if item_loc_id in self.locations:
+                self.locations[item_loc_id].items.append(item)
         return items
 
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.

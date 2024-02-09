@@ -27,7 +27,7 @@ from game_data import World, Item, Location, Player
 def handle_action(world, player, choice):
     """Handles the players choices"""
     # Extract the current location of the player
-    location = world.get_location(player.map_spot)
+    location = world.get_location(p.x, p.y)
 
     if choice == "look":
         # Display the full description of the location
@@ -39,22 +39,22 @@ def handle_action(world, player, choice):
         # Display the player's score
         # Assuming 'score' is an attribute of Player class
         print(f"Score: {player.score}")
+    elif choice == "back":
+        # Exit the game loop
+        print(".")
     elif choice == "quit":
         # Exit the game loop
         print("Quitting the game.")
+    else:
+        print("Non-valid input, returning to menu")
         player.victory = True  # Assuming ending the game sets 'victory' to True
-    elif choice.startswith("go "):
-        # Move the player to a new location if possible
-        direction = choice[3:]
-        # Implement the logic to update player's location based on the direction
-        # ...
     # Add more actions as needed based on your game design
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 
 
 if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
-    p = Player(2, 2)  # set starting location of player; you may change the x, y coordinates here as appropriate
+    p = Player(1, 1)  # set starting location of player; you may change the x, y coordinates here as appropriate
 
     menu = ["look", "inventory", "score", "quit", "back"]
 
@@ -77,9 +77,10 @@ if __name__ == "__main__":
             for option in menu:
                 print(option)
             choice = input("\nChoose action: ")
-            handle_action(w, p, location, choice)
+            handle_action(w, p, choice)
 
-        # TODO: CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON THE PLAYER'S CHOICE
+
+        #  TODO: CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON THE PLAYER'S CHOICE
         #  REMEMBER: the location = w.get_location(p.x, p.y) at the top of this loop will update the location if
         #  the choice the player made was just a movement, so only updating player's position is enough to change the
         #  location to the next appropriate location
