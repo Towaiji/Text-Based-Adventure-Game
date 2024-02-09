@@ -250,4 +250,3 @@ class World:
                 return None
             return self.locations.get(location_number)
         return None
-        # TODO: Complete this method as specified. Do not modify any of this function's specifications.
