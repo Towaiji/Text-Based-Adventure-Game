@@ -1,6 +1,6 @@
 1 10 5 Cheat Sheet T "use Ipad to get Cheat Sheet"
 1 10 5 Lucky Pencil T "trade Kit Kat for Lucky Pencil"
-1 10 5 Tcard R
+1 10 5 Tcard T "use Key to get Tcard"
 1 10 5 Key P "What is 37 - 20 + 52 = ?" "69"
 1 10 5 Kit Kat P "code to padlock is caesar cipher on the word 'quack' shifted by 7" "xbhjr"
 1 10 5 Ipad P "The password to unlock the Ipad is the year UofT was founded" "1827"
