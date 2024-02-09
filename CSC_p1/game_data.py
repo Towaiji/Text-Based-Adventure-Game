@@ -153,6 +153,9 @@ class World:
     Representation Invariants:
         - # TODO
     """
+    map: list[list[int]]
+    location: dict[int, Location]
+    items: dict[str, Item]
 
     def __init__(self, map_data: TextIO, location_data: TextIO, items_data: TextIO) -> None:
         """
