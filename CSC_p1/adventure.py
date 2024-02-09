@@ -64,6 +64,31 @@ def handle_action(world, player, choice):
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 
 
+def handle_trade(world, player, location):
+    for item in location.items:
+        if item.trade_requirement and item.trade_requirement in player.inventory:
+            print(f"You can trade your {item.trade_requirement} for {item.name}. Do you want to trade? (yes/no)")
+            choice = input("> ").lower()
+            if choice == "yes":
+                player.inventory.remove(item.trade_requirement)
+                player.inventory.append(item.name)
+                print(f"You traded your {item.trade_requirement} for {item.name}.")
+                break  # Assuming one trade per location visit
+
+
+def handle_puzzle(player, location):
+    if location.puzzle_question:
+        print(location.puzzle_question)
+        answer = input("Answer: ")
+        if answer.lower() == location.puzzle_answer.lower():
+            print("Correct! You solved the puzzle.")
+            if location.puzzle_reward:
+                player.inventory.append(location.puzzle_reward)
+                print(f"You received {location.puzzle_reward}.")
+        else:
+            print("That's not correct. Maybe try again later.")
+
+
 if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
     p = Player(1, 1)  # set starting location of player; you may change the x, y coordinates here as appropriate
