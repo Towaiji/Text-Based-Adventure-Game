@@ -69,7 +69,7 @@ if __name__ == "__main__":
         print("What to do? \n")
         print("[menu]")
         for action in location.avail_action:
-            print(action)
+            print("go " + action)
         choice = input("\nEnter action: ")
 
         if choice == "[menu]":
@@ -78,6 +78,17 @@ if __name__ == "__main__":
                 print(option)
             choice = input("\nChoose action: ")
             handle_action(w, p, choice)
+        elif choice == "go north":
+            p.y = p.y - 1
+        elif choice == "go south":
+            p.y = p.y + 1
+        elif choice == "go east":
+            p.x = p.x + 1
+        elif choice == "go west":
+            p.x = p.x - 1
+        else:
+            print("invalid action, try again (case sensitivity is required)")
+
 
 
         #  TODO: CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON THE PLAYER'S CHOICE
