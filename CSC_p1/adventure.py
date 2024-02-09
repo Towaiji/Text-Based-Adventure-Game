@@ -54,21 +54,17 @@ def handle_action(world, player, choice):
 
 if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
-    p = Player(1)  # set starting location of player; you may change the x, y coordinates here as appropriate
+    p = Player(2, 2)  # set starting location of player; you may change the x, y coordinates here as appropriate
 
     menu = ["look", "inventory", "score", "quit", "back"]
 
     while not p.victory:
-        location = w.get_location(p.map_spot)
+        location = w.get_location(p.x, p.y)
         if location.visited is False:
             print(location.f_desc)
             location.visited = True
         else:
             print(location.b_desc)
-
-        # TODO: ENTER CODE HERE TO PRINT LOCATION DESCRIPTION
-        # Depending on whether or not it's been visited before,
-        # print either full description (first time visit) or brief description (every subsequent visit)
 
         print("What to do? \n")
         print("[menu]")
