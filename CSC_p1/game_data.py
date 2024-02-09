@@ -36,10 +36,10 @@ class Item:
     """
     name: str
     start: int
-    point: int
+    end: int
     target_points: int
 
-    def __init__(self, name: str, start: int, points: int, target_points: int) -> None:
+    def __init__(self, name: str, start: int, end: int, target_points: int) -> None:
         """Initialize a new item.
         """
 
@@ -54,7 +54,7 @@ class Item:
 
         self.name = name
         self.start_position = start
-        self.points = points
+        self.end = end
         self.target_points = target_points
 
 
@@ -81,8 +81,7 @@ class Location:
     items: list[Item]
     visited: bool
 
-    def __init__(self, map_spot, points: int, avail_action: list, b_desc: str, f_desc: str, items: list[Item],
-                 visited: bool) -> None:
+    def __init__(self, map_spot, points: int, avail_action: list, b_desc: str, f_desc: str, items: list[Item],) -> None:
         """Initialize a new location.
 
         # TODO Add more details here about the initialization if needed
@@ -230,7 +229,7 @@ class World:
                     j += 1
                 f_desc = "\n".join(f_desc_lines)
                 items = []  # Handle after we agree on items
-                locations[loc_id] = Location(loc_id, points, pos_dir, b_desc, f_desc, items, False)
+                locations[loc_id] = Location(loc_id, points, pos_dir, b_desc, f_desc, items)
                 i = j  # Move to the next location number
             i += 1
         return locations
@@ -241,10 +240,10 @@ class World:
         for line in items_data:
             parts = line.strip().split()
             item_loc_id = int(parts[0])
-            points = int(parts[1])
+            end = int(parts[1])
             target_points = int(parts[2])
             name = " ".join(parts[3:])
-            item = Item(name, item_loc_id, points, target_points)
+            item = Item(name, item_loc_id, end, target_points)
             items[name] = item
             # Assign the item to its starting location
             if item_loc_id in self.locations:

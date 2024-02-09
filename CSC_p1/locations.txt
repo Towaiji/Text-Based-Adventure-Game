@@ -5,7 +5,7 @@ That way is blocked.
 END
 
 LOCATION 1
-0
+5
 north east south west
 You are in a hallway.
 You are in a crowded hallway, students are rushing everywhere to get to class on time. There are 3 rooms around you.
@@ -13,7 +13,7 @@ North is a Math class, West is the bathroom, East is a locked classroom. South i
 END
 
 LOCATION 2
-0
+5
 east
 You are in the Bathroom. a person has your lucky pencil but wants chocolate in return, why?
 You are in the Bathroom. It somehow does not smell bad today and for that you are thankful. There's a person who HAS YOUR LUCKY PENCIL?
@@ -22,7 +22,7 @@ He wants something in return though, he wants a sweet snack.
 END
 
 LOCATION 3
-0
+10
 south
 You are in a Math classroom.
 You are in an empty classroom. It seems to be a math class due to the amounts of tears everywhere.
@@ -31,7 +31,7 @@ There is a puzzle on the board you should solve it.
 END
 
 LOCATION 4
-0
+15
 south west
 You entered the locked classroom.
 you unlocked the classroom. You don't believe it! It seems like you can see your Tcard on one of the desks.
@@ -40,21 +40,21 @@ One of your friends stole it from you as a joke. They are not funny. At all!
 END
 
 LOCATION 5
-0
+5
 north east south
 You are outside. Robarts is South.
 You are outside on a crowded street. There is a smell of coffee in the air. Robarts is to the South of here.
 END
 
 LOCATION 6
-0
+5
 north east west
 You are on a street.
 You are crossing a street.
 END
 
 LOCATION 7
-0
+10
 north south
 You are in the Entrance of Robarts Library. Swipe your Tcard.
 You are in the Entrance of Robarts Library. You see all the students working hard during exam season.
@@ -62,7 +62,7 @@ Make sure to swipe your Tcard to enter.
 END
 
 LOCATION 8
-0
+5
 north east south
 You are on the first floor of the Robarts Library. There is an empty study room to the South, an exit from the library to the East.
 You are on the first floor of the Robarts Library. It's usually crowded at this time of the day, but today it's eerily quiet.
@@ -71,14 +71,14 @@ service desk, looking bored and sleepy. There is an empty study room to the Sout
 END
 
 LOCATION 9
-0
+5
 east west
 You are in a Hallway in Robarts.
 You are in a Hallway in  Robarts. It's really quiet. make sure to keep it that way!
 END
 
 LOCATION 10
-0
+10
 west
 This study room is completely empty.
 You are in an empty study room. And by empty, we mean, absolutely empty. All the tables and chairs have been taken out,
@@ -87,7 +87,7 @@ the whiteboards taken off the wall, not even the carpeting is left. Are they pla
 END
 
 LOCATION 11
-0
+10
 north
 You are in a printer room. You can print your cheat sheet with your Ipad.
 You discovered the printer room in Robarts. One of the busiest rooms on earth. Use your Ipad to print your cheat sheet, and be Quick!
@@ -95,21 +95,21 @@ You discovered the printer room in Robarts. One of the busiest rooms on earth. U
 END
 
 LOCATION 12
-0
+5
 east west
 You are crossing the street.
 You are crossing the street. Be careful of the cars around. it might cost you time if you are not swift and careful.
 END
 
 LOCATION 13
-0
+5
 north east west
 You are in College Street.
 You are in College Street. Way ahead up North is the Exam Center, make sure you have all your belongings before entering.
 END
 
 LOCATION 14
-0
+10
 north
 This is your res. Almost all your belongings are here.
 This is your res. All your belongings are here. Well not all of them since you're not tidy.
@@ -117,21 +117,21 @@ This is your res. All your belongings are here. Well not all of them since you'r
 END
 
 LOCATION 15
-0
+5
 north south
 You are outside the exam center.
-You are outside the exam center. Just head North and ofcourse, best of luck on your exam :3.
+You are outside the exam center. Just head North and of course, best of luck on your exam :3.
 END
 
 LOCATION 16
-0
+20
 south
 This is it, the Exam Center.
 This is it. The exam Center. If you are finally ready, Good Luck! If you aren't, then MOVE FASTER.
 END
 
 LOCATION 17
-0
+-15
 west south
 Deadend.
 Deadend, turn back and continue walking
