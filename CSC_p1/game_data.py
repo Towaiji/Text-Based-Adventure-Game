@@ -244,7 +244,10 @@ class World:
          that position. Otherwise, return None. (Remember, locations represented by the number -1 on the map should
          return None.)
         """
-        if map_spot == -1:
-            return None
-        return self.locations.get(map_spot)
+        if 0 <= y < len(self.map) and 0 <= x < len(self.map[y]):
+            location_number = self.map[y][x]
+            if location_number == -1:
+                return None
+            return self.locations.get(location_number)
+        return None
         # TODO: Complete this method as specified. Do not modify any of this function's specifications.
