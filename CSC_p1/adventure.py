@@ -24,6 +24,18 @@ from game_data import World, Item, Location, Player
 # Note: You may add helper functions, classes, etc. here as needed
 
 
+def reverse_movement(player, last_choice):
+    """reverses movement due to certain conditions"""
+    if last_choice == "go north":
+        player.y -= 1  # Move back south
+    elif last_choice == "go south":
+        player.y += 1  # Move back north
+    elif last_choice == "go east":
+        player.x -= 1  # Move back west
+    elif last_choice == "go west":
+        player.x += 1  # Move back east
+
+
 def handle_action(world, player, choice):
     """Handles the players choices"""
     # Extract the current location of the player
@@ -57,12 +69,25 @@ if __name__ == "__main__":
     p = Player(1, 1)  # set starting location of player; you may change the x, y coordinates here as appropriate
 
     menu = ["look", "inventory", "score", "quit", "back"]
-
-    while not p.victory:
+    counter = 0
+    choice = ""
+    while not p.victory and counter <= 80:
         location = w.get_location(p.x, p.y)
-        if location.visited is False:
+        if location.map_spot in [4, 7]:
+            required_item = "Key" if location.map_spot == 4 else "Tcard"
+            if required_item not in p.inventory:
+                print(f"You are missing an item to enter this location: {required_item}")
+                reverse_movement(p, choice)
+                continue
+            else:
+                # Allowed to enter, handle as normal location
+                pass  # This can be replaced with the normal handling code for entering a location
+
+            # Normal location handling (first visit or subsequent visits)
+        if not location.visited:
             print(location.f_desc)
             location.visited = True
+            p.points += location.points  # Assuming points need to be added on first visit
         else:
             print(location.b_desc)
 
@@ -89,7 +114,12 @@ if __name__ == "__main__":
         else:
             print("invalid action, try again (case sensitivity is required)")
 
+        counter += 1
 
+        if (('Cheat Sheet' and 'Lucky Pencil' and 'Tcard' in p.inventory) and
+                (w.get_location(p.x, p.y) == 16)):
+            print("You did it! You reached the exam on time and did AMAZING!")
+            p.victory = True
 
         #  TODO: CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON THE PLAYER'S CHOICE
         #  REMEMBER: the location = w.get_location(p.x, p.y) at the top of this loop will update the location if
