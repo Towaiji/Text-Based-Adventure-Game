@@ -38,16 +38,16 @@ def handle_action(world, player, choice):
     elif choice == "score":
         # Display the player's score
         # Assuming 'score' is an attribute of Player class
-        print(f"Score: {player.score}")
+        print(f"Score: {player.points}")
     elif choice == "back":
         # Exit the game loop
         print(".")
     elif choice == "quit":
         # Exit the game loop
         print("Quitting the game.")
+        player.victory = True
     else:
         print("Non-valid input, returning to menu")
-        player.victory = True  # Assuming ending the game sets 'victory' to True
     # Add more actions as needed based on your game design
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 
@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
         print("What to do? \n")
         print("[menu]")
-        for action in location.available_actions():
+        for action in location.avail_action:
             print(action)
         choice = input("\nEnter action: ")
 
