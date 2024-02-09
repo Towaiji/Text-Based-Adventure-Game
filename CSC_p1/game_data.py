@@ -126,16 +126,18 @@ class Player:
         - map_spot >= 0
 
     """
-    map_spot: int
+    x: int
+    y: int
     inventory: list
     victory: bool
 
-    def __init__(self, map_spot) -> None:
+    def __init__(self, x, y) -> None:
         """
         Initializes a new Player at position (x, y).
         """
 
-        self.map_spot = map_spot
+        self.x = x
+        self.y = y
         self.inventory = []
         self.victory = False
 
@@ -237,7 +239,7 @@ class World:
         return items
 
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
-    def get_location(self, map_spot: int) -> Optional[Location]:
+    def get_location(self, x: int, y: int) -> Optional[Location]:
         """Return Location object associated with the coordinates (x, y) in the world map, if a valid location exists at
          that position. Otherwise, return None. (Remember, locations represented by the number -1 on the map should
          return None.)

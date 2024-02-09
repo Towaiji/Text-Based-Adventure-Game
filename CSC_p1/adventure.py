@@ -60,9 +60,11 @@ if __name__ == "__main__":
 
     while not p.victory:
         location = w.get_location(p.map_spot)
-
-        choice = input("\nEnter action: ").strip().lower()
-        handle_action(w, p, location, choice)
+        if location.visited is False:
+            print(location.f_desc)
+            location.visited = True
+        else:
+            print(location.b_desc)
 
         # TODO: ENTER CODE HERE TO PRINT LOCATION DESCRIPTION
         # Depending on whether or not it's been visited before,
@@ -79,6 +81,7 @@ if __name__ == "__main__":
             for option in menu:
                 print(option)
             choice = input("\nChoose action: ")
+            handle_action(w, p, location, choice)
 
         # TODO: CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON THE PLAYER'S CHOICE
         #  REMEMBER: the location = w.get_location(p.x, p.y) at the top of this loop will update the location if
