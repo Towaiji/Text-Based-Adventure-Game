@@ -13,8 +13,10 @@ END
 
 LOCATION 2
 0
-You are in the Bathroom. why?
-You are in the Bathroom. It somehow does not smell bad today and for that you are thankful.
+You are in the Bathroom. a person has your lucky pencil but wants chocolate in return, why?
+You are in the Bathroom. It somehow does not smell bad today and for that you are thankful. There's a person who HAS YOUR LUCKY PENCIL?
+He wants something in return though, he wants a sweet snack.
+[Lucky Pencil]
 END
 
 LOCATION 3
@@ -30,6 +32,7 @@ LOCATION 4
 You entered the locked classroom.
 you unlocked the classroom. You don't believe it! It seems like you can see your Tcard on one of the desks.
 One of your friends stole it from you as a joke. They are not funny. At all!
+[Tcard]
 END
 
 LOCATION 5
