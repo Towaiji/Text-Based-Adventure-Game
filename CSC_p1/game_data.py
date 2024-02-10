@@ -88,7 +88,7 @@ class TradeItem(Item):
     Representation Invariants:
         - self.trade_line != ''
         - self.trade_key != ''
-        - self.trade_key
+        - self.trade_key exists in world.items
     """
     trade_line: str
     trade_key: str
@@ -126,8 +126,6 @@ class Location:
 
     def __init__(self, map_spot, points: int, avail_action: list, b_desc: str, f_desc: str) -> None:
         """Initialize a new location.
-
-        # TODO Add more details here about the initialization if needed
         """
 
         self.map_spot = map_spot
@@ -179,7 +177,8 @@ class World:
         - items: a dictionary mapping item names to Item objects
 
     Representation Invariants:
-        - # TODO
+        - map != []
+        - location != {}
     """
     map: list[list[int]]
     location: dict[int, Location]
