@@ -164,7 +164,7 @@ if __name__ == "__main__":
     menu = ["look", "inventory", "score", "map", "use item", "pick-up item", "drop item", "quit", "back"]
     counter = 0
     choice = ""
-    while not p.victory or counter <= 80:
+    while not p.victory and counter <= 80:
         location = w.get_location(p.x, p.y)
         if location is None:
             print("You can't go that way.")
@@ -222,5 +222,5 @@ if __name__ == "__main__":
                 (w.get_location(p.x, p.y).map_spot == 16)):
             print("You did it! You reached the exam on time and did AMAZING!")
             p.victory = True
-    if choice == "quit":
+    if choice == "quit" or counter > 80:
         print("YOU LOSE, DO BETTER NEXT TIME")
