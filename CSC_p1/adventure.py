@@ -88,7 +88,7 @@ def handle_action(world: World, player: Player, chc: str):
             print("you do not have that item, or it does not exist")
     elif chc == "quit":
         # Exit the game loop
-        p.victory = False
+        p.victory = True
         print("Quitting the game.")
     elif chc == "back":
         # Exit the game loop
@@ -164,7 +164,7 @@ if __name__ == "__main__":
     menu = ["look", "inventory", "score", "map", "use item", "pick-up item", "drop item", "quit", "back"]
     counter = 0
     choice = ""
-    while not p.victory and counter <= 80:
+    while not p.victory or counter <= 80:
         location = w.get_location(p.x, p.y)
         if location is None:
             print("You can't go that way.")
@@ -178,6 +178,7 @@ if __name__ == "__main__":
                 continue
             else:
                 if required_item == "Key" and "Key" in p.inventory:
+                    p.points += w.items["Key"].target_points
                     p.inventory.remove("Key")
                 # Allowed to enter, handle as normal location
                 pass
@@ -221,3 +222,5 @@ if __name__ == "__main__":
                 (w.get_location(p.x, p.y).map_spot == 16)):
             print("You did it! You reached the exam on time and did AMAZING!")
             p.victory = True
+    if choice == "quit":
+        print("YOU LOSE, DO BETTER NEXT TIME")
