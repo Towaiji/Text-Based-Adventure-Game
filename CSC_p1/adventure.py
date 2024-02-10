@@ -95,7 +95,7 @@ def handle_action(world: World, player: Player, chc: str):
 
 def map_maker(world: World, player: Player):
     """
-        stupid
+        Prints out the map with the player's position marked by an 'X'.
     """
     print("X is where you are")
     for row in range(0, len(world.map)):
@@ -110,10 +110,9 @@ def map_maker(world: World, player: Player):
     print()
 
 
-
 def handle_trade(world: World, player: Player, item: Item):
     """
-        stupid
+    Handles a trade in the game so a player can exchange an item for another.
     """
     loc = world.get_location(player.x, player.y)
     for items in loc.items:
@@ -128,7 +127,8 @@ def handle_trade(world: World, player: Player, item: Item):
 
 def handle_puzzle(world: World, player: Player, puzzle: PuzzleItem):
     """
-     stupid
+    Handles the interaction of a player attempting to pick up an item that requires
+    solving a puzzle.
     """
     loc = world.get_location(player.x, player.y)
     correct = False
