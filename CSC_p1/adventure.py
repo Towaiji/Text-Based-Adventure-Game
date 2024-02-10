@@ -56,12 +56,13 @@ def handle_action(world: World, player: Player, chc: str):
         # Player picks up item and item is removed from location
         print("What item do you want to pick up?")
         pick_item = input("item to be picked up: ")
+        p_item = world.items[pick_item]
         if pick_item in w.items and world.items[pick_item] in loc.items:
-            if world.items[pick_item] is PuzzleItem and world.items[pick_item].start_position == loc:
-                handle_puzzle(world, player, world.items[pick_item])
+            if isinstance(p_item, PuzzleItem) and world.items[pick_item].start_position == loc:
+                handle_puzzle(world, player, p_item)
             else:
                 player.inventory.append(pick_item)
-                loc.items.remove(world.items[pick_item])
+                loc.items.remove(p_item)
         else:
             print("that item is not in the room or is not an item")
     elif chc == "drop item":
@@ -116,7 +117,7 @@ def handle_trade(world: World, player: Player, item: Item):
     """
     loc = world.get_location(player.x, player.y)
     for items in loc.items:
-        if items is TradeItem and item.end == loc and items.trade_key == item.name:
+        if isinstance(items, TradeItem) and item.end == loc and items.trade_key == item.name:
             print(f"You used the {item} successfully! You {items.trade_line}")
             player.inventory.remove(item)
             player.inventory.append(items)
@@ -125,7 +126,7 @@ def handle_trade(world: World, player: Player, item: Item):
             print("That item has no use or cannot be used here")
 
 
-def handle_puzzle(world: World, player: Player, puzzle):
+def handle_puzzle(world: World, player: Player, puzzle: PuzzleItem):
     """
      stupid
     """
