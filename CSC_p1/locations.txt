@@ -101,7 +101,7 @@ END
 
 LOCATION 13
 5
-north east west
+north south east west
 You are in College Street.
 You are in College Street. Way ahead up North is the Exam Center, make sure you have all your belongings before entering.
 END
@@ -129,8 +129,8 @@ This is it. The exam Center. If you are finally ready, Good Luck! If you aren't,
 END
 
 LOCATION 17
-5
-west south
-you are around the street.
-you are around the street. south is your dorm room.
+-15
+west
+you are at a dead end.
+you are at a dead end. You should stop wasting time.
 END
