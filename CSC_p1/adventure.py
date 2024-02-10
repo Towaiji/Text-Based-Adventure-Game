@@ -57,12 +57,13 @@ def handle_action(world: World, player: Player, chc: str):
         print("What item do you want to pick up?")
         pick_item = input("item to be picked up: ")
         p_item = world.items[pick_item]
-        if pick_item in w.items and world.items[pick_item] in loc.items:
-            if isinstance(p_item, PuzzleItem) and world.items[pick_item].start_position == loc:
+        if pick_item in w.items and p_item in loc.items:
+            if isinstance(p_item, PuzzleItem) and p_item.start_position == loc.map_spot:
                 handle_puzzle(world, player, p_item)
             else:
                 player.inventory.append(pick_item)
                 loc.items.remove(p_item)
+                print(f"you picked up {pick_item}")
         else:
             print("that item is not in the room or is not an item")
     elif chc == "drop item":
@@ -116,10 +117,10 @@ def handle_trade(world: World, player: Player, item: Item):
     """
     loc = world.get_location(player.x, player.y)
     for items in loc.items:
-        if isinstance(items, TradeItem) and item.end == loc and items.trade_key == item.name:
-            print(f"You used the {item} successfully! You {items.trade_line}")
-            player.inventory.remove(item)
-            player.inventory.append(items)
+        if isinstance(items, TradeItem) and item.end == loc.map_spot and items.trade_key == item.name:
+            print(f"You used the {item.name} successfully! You {items.trade_line}")
+            player.inventory.remove(item.name)
+            player.inventory.append(items.name)
             player.points += item.target_points
         else:
             print("That item has no use or cannot be used here")
@@ -133,7 +134,7 @@ def handle_puzzle(world: World, player: Player, puzzle: PuzzleItem):
     loc = world.get_location(player.x, player.y)
     correct = False
     quits = False
-    while correct and quits and puzzle.solved is False:
+    while not(correct or quits or puzzle.solved):
         print(f"To pick up the item you must pass a Puzzle!\nthe question is {puzzle.puzzle_q}")
         answer = input("Answer here: ")
         if answer == puzzle.puzzle_a:
@@ -146,7 +147,7 @@ def handle_puzzle(world: World, player: Player, puzzle: PuzzleItem):
         else:
             print("Incorrect ;w;, Try again or enter 'quit' to quit trying and return")
     if puzzle.solved is True:
-        player.inventory.append(puzzle)
+        player.inventory.append(puzzle.name)
         loc.items.remove(world.items[puzzle.name])
 
 
@@ -164,13 +165,13 @@ if __name__ == "__main__":
             reverse_movement(p, choice)
             continue
         if location.map_spot in [4, 7]:
-            required_item = "Key" if location.map_spot == 4 else "Tcard"
-            if required_item not in p.inventory:
+            required_item = "Key" if location.map_spot == 4 else "TCard"
+            if required_item not in p.inventory and location.visited is False:
                 print(f"You are missing an item to enter this location: {required_item}")
                 reverse_movement(p, choice)
                 continue
             else:
-                if required_item == "Key":
+                if required_item == "Key" and "Key" in p.inventory:
                     p.inventory.remove("Key")
                 # Allowed to enter, handle as normal location
                 pass
@@ -208,7 +209,7 @@ if __name__ == "__main__":
 
         counter += 1
 
-        if (('Cheat Sheet' and 'Lucky Pencil' and 'Tcard' in p.inventory) and
+        if (('Cheat Sheet' in p.inventory and 'Lucky Pencil' in p.inventory and 'TCard' in p.inventory) and
                 (w.get_location(p.x, p.y) == 16)):
             print("You did it! You reached the exam on time and did AMAZING!")
             p.victory = True
