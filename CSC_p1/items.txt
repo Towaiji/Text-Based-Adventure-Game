@@ -1,6 +1,6 @@
-1 10 5 T "used Ipad to get print Cheat Sheet" IPad Cheat Sheet
-1 10 5 T "traded Kit Kat for Lucky Pencil" KitKat Lucky Pencil
-1 10 5 T "used Key to get Tcard" Key TCard
-1 10 5 P "What is 37 - 20 + 52 = ?" "69" Key
-1 10 5 P "code to padlock is caesar cipher on the word 'quack' shifted by 7" "xbhjr" KitKat
-1 10 5 P "The password to unlock the Ipad is the year UofT was founded" "1827" IPad
+11 16 5 T "used Ipad to get print Cheat Sheet" IPad Cheat Sheet
+2 16 5 T "traded Kit Kat for Lucky Pencil" KitKat Lucky Pencil
+4 16 5 T "used Key to get Tcard" Key TCard
+3 4 5 P "What is 37 - 20 + 52 = ?" "69" Key
+10 2 5 P "code to padlock is caesar cipher on the word 'quack' shifted by 7" "xbhjr" KitKat
+14 11 5 P "The password to unlock the Ipad is the year UofT was founded" "1827" IPad
