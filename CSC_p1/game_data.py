@@ -18,7 +18,7 @@ please consult our Course Syllabus.
 
 This file is Copyright (c) 2024 CSC111 Teaching Team
 """
-from typing import Optional, TextIO
+from typing import Optional, TextIO, Any
 
 
 class Item:
@@ -42,20 +42,42 @@ class Item:
     def __init__(self, name: str, start: int, end: int, target_points: int) -> None:
         """Initialize a new item.
         """
-
-        # NOTES:
-        # This is just a suggested starter class for Item.
-        # You may change these parameters and the data available for each Item object as you see fit.
-        # (The current parameters correspond to the example in the handout).
-        # Consider every method in this Item class as a "suggested method".
-        #
-        # The only thing you must NOT change is the name of this class: Item.
-        # All item objects in your game MUST be represented as an instance of this class.
-
         self.name = name
         self.start_position = start
         self.end = end
         self.target_points = target_points
+
+
+class PuzzleItem(Item):
+    """
+        stupid
+    """
+    puzzle_q: str
+    puzzle_a: Any
+    solved: bool
+
+    def __init__(self, name: str, start: int, end: int, target_points: int, puzzle_q: str, puzzle_a: Any) -> None:
+        """Initialize a new item.
+        """
+        super().__init__(name, start, end, target_points)
+        self.puzzle_q = puzzle_q
+        self.puzzle_a = puzzle_a
+        self.solved = False
+
+
+class TradeItem(Item):
+    """
+        stupid
+    """
+    trade_line: str
+    trade_key: str
+
+    def __init__(self, name: str, start: int, end: int, target_points: int, trade_line: str, trade_key: str) -> None:
+        """Initialize a new item.
+        """
+        super().__init__(name, start, end, target_points)
+        self.trade_line = trade_line
+        self.trade_key = trade_key
 
 
 class Location:
@@ -81,42 +103,19 @@ class Location:
     items: list[Item]
     visited: bool
 
-    def __init__(self, map_spot, points: int, avail_action: list, b_desc: str, f_desc: str, items: list[Item],) -> None:
+    def __init__(self, map_spot, points: int, avail_action: list, b_desc: str, f_desc: str) -> None:
         """Initialize a new location.
 
         # TODO Add more details here about the initialization if needed
         """
-
-        # NOTES:
-        # Data that could be associated with each Location object:
-        # Store these as you see fit, using appropriate data types.
-        #
-        # This is just a suggested starter class for Location.
-        # You may change/add parameters and the data available for each Location object as you see fit.
-        #
-        # The only thing you must NOT change is the name of this class: Location.
-        # All locations in your game MUST be represented as an instance of this class.
 
         self.map_spot = map_spot
         self.points = points
         self.avail_action = avail_action
         self.b_desc = b_desc
         self.f_desc = f_desc
-        self.items = items
+        self.items = []
         self.visited = False
-
-    def available_actions(self):
-        """
-        Return the available actions in this location.
-        The actions should depend on the items available in the location
-        and the x,y position of this location on the world map.
-        """
-
-        # NOTE: This is just a suggested method
-        # i.e. You may remove/modify/rename this as you like, and complete the
-        # function header (e.g. add in parameters, complete the type contract) as needed
-
-        # TODO: Complete this method, if you'd like or remove/replace it if you're not using it
 
 
 class Player:
@@ -228,8 +227,7 @@ class World:
                     f_desc_lines.append(content[j].strip())
                     j += 1
                 f_desc = "\n".join(f_desc_lines)
-                items = []  # Handle after we agree on items
-                locations[loc_id] = Location(loc_id, points, pos_dir, b_desc, f_desc, items)
+                locations[loc_id] = Location(loc_id, points, pos_dir, b_desc, f_desc)
                 i = j  # Move to the next location number
             i += 1
         return locations
@@ -242,8 +240,17 @@ class World:
             item_loc_id = int(parts[0])
             end = int(parts[1])
             target_points = int(parts[2])
-            name = " ".join(parts[3:])
-            item = Item(name, item_loc_id, end, target_points)
+            tr_or_pu = parts[3]
+            if tr_or_pu == "T":
+                trd_line = parts[4]
+                trd_key = parts[5]
+                name = " ".join(parts[6:])
+                item = TradeItem(name, item_loc_id, end, target_points, trd_line, trd_key)
+            else:
+                pq = parts[4]
+                pa = parts[5]
+                name = " ".join(parts[6:])
+                item = PuzzleItem(name, item_loc_id, end, target_points, pq, pa)
             items[name] = item
             # Assign the item to its starting location
             if item_loc_id in self.locations:

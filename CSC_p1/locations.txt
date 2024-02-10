@@ -18,7 +18,6 @@ east
 You are in the Bathroom. a person has your lucky pencil but wants chocolate in return, why?
 You are in the Bathroom. It somehow does not smell bad today and for that you are thankful. There's a person who HAS YOUR LUCKY PENCIL?
 He wants something in return though, he wants a sweet snack.
-[Lucky Pencil]
 END
 
 LOCATION 3
@@ -27,7 +26,7 @@ south
 You are in a Math classroom.
 You are in an empty classroom. It seems to be a math class due to the amounts of tears everywhere.
 There is a puzzle on the board you should solve it.
-[Key]
+Items in room: Key
 END
 
 LOCATION 4
@@ -36,7 +35,7 @@ south west
 You entered the locked classroom.
 you unlocked the classroom. You don't believe it! It seems like you can see your Tcard on one of the desks.
 One of your friends stole it from you as a joke. They are not funny. At all!
-[Tcard]
+Items in room: TCard
 END
 
 LOCATION 5
@@ -83,15 +82,14 @@ west
 This study room is completely empty.
 You are in an empty study room. And by empty, we mean, absolutely empty. All the tables and chairs have been taken out,
 the whiteboards taken off the wall, not even the carpeting is left. Are they planning to do something else with this space?
-[Kit Kat]
+Items in room: KitKat
 END
 
 LOCATION 11
 10
 north
-You are in a printer room. You can print your cheat sheet with your Ipad.
+You are in a printer room. You can print your cheat sheet with your IPad.
 You discovered the printer room in Robarts. One of the busiest rooms on earth. Use your Ipad to print your cheat sheet, and be Quick!
-[Cheat Sheet]
 END
 
 LOCATION 12
@@ -113,7 +111,7 @@ LOCATION 14
 north
 This is your dorm. Almost all your belongings are here.
 This is your dorm. All your belongings are here. Well not all of them since you're not tidy.
-[Ipad]
+Items in room: IPad
 END
 
 LOCATION 15
