@@ -257,7 +257,6 @@ class World:
         items = {}
         for line in items_data:
             parts = line.strip().split("!")
-            print(parts)
             item_loc_id = int(parts[0])
             end = int(parts[1])
             target_points = int(parts[2])
