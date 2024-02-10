@@ -89,7 +89,7 @@ LOCATION 11
 10
 north
 You are in a printer room. You can print your cheat sheet with your IPad.
-You discovered the printer room in Robarts. One of the busiest rooms on earth. Use your Ipad to print your cheat sheet, and be Quick!
+You discovered the printer room in Robarts. One of the busiest rooms on earth. Use your IPad to print your cheat sheet, and be Quick!
 END
 
 LOCATION 12
