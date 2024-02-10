@@ -10,6 +10,7 @@ north east south west
 You are in a hallway.
 You are in a crowded hallway, students are rushing everywhere to get to class on time. There are 3 rooms around you.
 North is a Math class, West is the bathroom, East is a locked classroom. South is the exit
+Items in room:
 END
 
 LOCATION 2
@@ -18,6 +19,7 @@ east
 You are in the Bathroom.
 You are in the Bathroom. It somehow does not smell bad today and for that you are thankful. There's a person who HAS YOUR LUCKY PENCIL?
 He wants something in return though, he wants a sweet snack.
+Items in room:
 END
 
 LOCATION 3
@@ -26,7 +28,7 @@ south
 You are in a Math classroom.
 You are in an empty classroom. It seems to be a math class due to the amounts of tears everywhere.
 There is a puzzle on the board you should solve it.
-Items in room: Key
+Items in room:
 END
 
 LOCATION 4
@@ -35,7 +37,7 @@ south west
 You entered the locked classroom.
 you unlocked the classroom using the key. You don't believe it! It seems like you can see your Tcard on one of the desks.
 One of your friends stole it from you as a joke. They are not funny. At all!
-Items in room: TCard
+Items in room:
 END
 
 LOCATION 5
@@ -43,6 +45,7 @@ LOCATION 5
 north east south
 You are outside. Robarts is South.
 You are outside on a crowded street. There is a smell of coffee in the air. Robarts is to the South of here.
+Items in room:
 END
 
 LOCATION 6
@@ -50,6 +53,7 @@ LOCATION 6
 north east west
 You are on a street.
 You are crossing a street.
+Items in room:
 END
 
 LOCATION 7
@@ -58,6 +62,7 @@ north south
 You are in the Entrance of Robarts Library. Swipe your Tcard.
 You are in the Entrance of Robarts Library. You see all the students working hard during exam season.
 Make sure to swipe your Tcard to enter.
+Items in room:
 END
 
 LOCATION 8
@@ -67,6 +72,7 @@ You are on the first floor of the Robarts Library. There is an empty study room 
 You are on the first floor of the Robarts Library. It's usually crowded at this time of the day, but today it's eerily quiet.
 Only a few students are studying inside one of the study rooms. You better not disturb them. A librarian stands near the
 service desk, looking bored and sleepy. There is an empty study room to the South, an exit from the library to the East.
+Items in room:
 END
 
 LOCATION 9
@@ -74,6 +80,7 @@ LOCATION 9
 east west
 You are in a Hallway in Robarts.
 You are in a Hallway in  Robarts. It's really quiet. make sure to keep it that way!
+Items in room:
 END
 
 LOCATION 10
@@ -82,7 +89,7 @@ west
 This study room is completely empty.
 You are in an empty study room. And by empty, we mean, absolutely empty. All the tables and chairs have been taken out,
 the whiteboards taken off the wall, not even the carpeting is left. Are they planning to do something else with this space?
-Items in room: KitKat
+Items in room:
 END
 
 LOCATION 11
@@ -90,6 +97,7 @@ LOCATION 11
 north
 You are in a printer room. You can print your cheat sheet with your IPad.
 You discovered the printer room in Robarts. One of the busiest rooms on earth. Use your IPad to print your cheat sheet, and be Quick!
+Items in room:
 END
 
 LOCATION 12
@@ -97,6 +105,7 @@ LOCATION 12
 east west
 You are crossing the street.
 You are crossing the street. Be careful of the cars around. it might cost you time if you are not swift and careful.
+Items in room:
 END
 
 LOCATION 13
@@ -104,6 +113,7 @@ LOCATION 13
 north south east west
 You are in College Street.
 You are in College Street. Way ahead up North is the Exam Center, make sure you have all your belongings before entering.
+Items in room:
 END
 
 LOCATION 14
@@ -111,7 +121,7 @@ LOCATION 14
 north
 This is your dorm. Almost all your belongings are here.
 This is your dorm. All your belongings are here. Well not all of them since you're not tidy.
-Items in room: IPad
+Items in room:
 END
 
 LOCATION 15
@@ -119,6 +129,7 @@ LOCATION 15
 north south
 You are outside the exam center.
 You are outside the exam center. Just head North and of course, best of luck on your exam :3.
+Items in room:
 END
 
 LOCATION 16
@@ -126,6 +137,7 @@ LOCATION 16
 south
 This is it, the Exam Center.
 This is it. The exam Center. If you are finally ready, Good Luck! If you aren't, then MOVE FASTER.
+Items in room:
 END
 
 LOCATION 17
@@ -133,4 +145,5 @@ LOCATION 17
 west
 you are at a dead end.
 you are at a dead end. You should stop wasting time.
+Items in room:
 END

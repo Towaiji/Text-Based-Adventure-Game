@@ -43,6 +43,8 @@ def handle_action(world: World, player: Player, chc: str):
     if chc == "look":
         # Display the full description of the location
         print(loc.f_desc)
+        for it in loc.items:
+            print(it.name)
     elif chc == "inventory":
         # Display the player's inventory
         print("Inventory:", player.inventory)
@@ -182,6 +184,8 @@ if __name__ == "__main__":
             # Normal location handling (first visit or subsequent visits)
         if not location.visited:
             print(location.f_desc)
+            for it in location.items:
+                print(it.name)
             location.visited = True
             p.points += location.points
         else:
