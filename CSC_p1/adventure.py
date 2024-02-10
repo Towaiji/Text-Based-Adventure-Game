@@ -27,9 +27,9 @@ from game_data import World, Item, PuzzleItem, TradeItem, Player
 def reverse_movement(player, last_choice):
     """reverses movement due to certain conditions"""
     if last_choice == "go north":
-        player.y -= 1  # Move back south
+        player.y += 1  # Move back south
     elif last_choice == "go south":
-        player.y += 1  # Move back north
+        player.y -= 1  # Move back north
     elif last_choice == "go east":
         player.x -= 1  # Move back west
     elif last_choice == "go west":
