@@ -50,7 +50,18 @@ class Item:
 
 class PuzzleItem(Item):
     """
-        stupid
+        A class that is inherited from the Item class,
+        represents the puzzle items in which you have to solve a puzzle to acquire them.
+
+    Instance Attributes:
+        - puzzle_q: The question or riddle that makes up the puzzle.
+        - puzzle_a: The answer to the puzzle question.
+        - solved: A boolean indicating whether the puzzle has been solved.
+
+    Representation Invariants:
+        - self.puzzle_q != ''
+        - self.puzzle_a is not None
+        - isinstance(self.solved, bool)
     """
     puzzle_q: str
     puzzle_a: Any
@@ -67,7 +78,17 @@ class PuzzleItem(Item):
 
 class TradeItem(Item):
     """
-        stupid
+        A class that is inherited from the Item class,
+        represents the trade items in which you have to trade a key item to acquire them.
+
+    Instance Attributes:
+        - trade_line: A message or hint related to the trade.
+        - trade_key: The name of the item required for the trade.
+
+    Representation Invariants:
+        - self.trade_line != ''
+        - self.trade_key != ''
+        - self.trade_key
     """
     trade_line: str
     trade_key: str

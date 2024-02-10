@@ -159,6 +159,10 @@ if __name__ == "__main__":
     choice = ""
     while not p.victory and counter <= 80:
         location = w.get_location(p.x, p.y)
+        if location is None:
+            print("You can't go that way.")
+            reverse_movement(p, choice)
+            continue
         if location.map_spot in [4, 7]:
             required_item = "Key" if location.map_spot == 4 else "Tcard"
             if required_item not in p.inventory:
@@ -169,13 +173,13 @@ if __name__ == "__main__":
                 if required_item == "Key":
                     p.inventory.remove("Key")
                 # Allowed to enter, handle as normal location
-                pass  # This can be replaced with the normal handling code for entering a location
+                pass
 
             # Normal location handling (first visit or subsequent visits)
         if not location.visited:
             print(location.f_desc)
             location.visited = True
-            p.points += location.points  # Assuming points need to be added on first visit
+            p.points += location.points
         else:
             print(location.b_desc)
 
