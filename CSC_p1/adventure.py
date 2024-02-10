@@ -19,7 +19,7 @@ This file is Copyright (c) 2024 CSC111 Teaching Team
 """
 
 # Note: You may add in other import statements here as needed
-from game_data import World, Item, PuzzleItem, TradeItem, Location, Player
+from game_data import World, Item, PuzzleItem, TradeItem, Player
 
 # Note: You may add helper functions, classes, etc. here as needed
 
@@ -36,7 +36,7 @@ def reverse_movement(player, last_choice):
         player.x += 1  # Move back east
 
 
-def handle_action(world, player, chc):
+def handle_action(world: World, player: Player, chc: str):
     """Handles the players choices"""
     # Extract the current location of the player
     loc = world.get_location(player.x, player.y)
@@ -92,21 +92,25 @@ def handle_action(world, player, chc):
         print("Non-valid input, returning to menu")
 
 
-def map_maker(world, player):
+def map_maker(world: World, player: Player):
     """
         stupid
     """
     print("X is where you are")
-    for row in world.map:
+    row = 0
+    col = 0
+    for rw in world.map:
         print("\n")
-        for col in row:
+        for _ in rw:
             if row == player.y and col == player.x:
                 print("X")
             else:
                 print(world.map[row][col])
+            col += 1
+        row += 1
 
 
-def handle_trade(world, player, item: Item):
+def handle_trade(world: World, player: Player, item: Item):
     """
         stupid
     """
@@ -121,7 +125,7 @@ def handle_trade(world, player, item: Item):
             print("That item has no use or cannot be used here")
 
 
-def handle_puzzle(world, player, puzzle: PuzzleItem):
+def handle_puzzle(world: World, player: Player, puzzle):
     """
      stupid
     """
@@ -142,7 +146,7 @@ def handle_puzzle(world, player, puzzle: PuzzleItem):
             print("Incorrect ;w;, Try again or enter 'quit' to quit trying and return")
     if puzzle.solved is True:
         player.inventory.append(puzzle)
-        loc.items.remove(world.items[puzzle])
+        loc.items.remove(world.items[puzzle.name])
 
 
 if __name__ == "__main__":
