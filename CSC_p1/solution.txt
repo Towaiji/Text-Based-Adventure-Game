@@ -1,5 +1,5 @@
 go north
-look
+[menu]
 69
 go south
 go east
