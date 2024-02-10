@@ -98,17 +98,17 @@ def map_maker(world: World, player: Player):
         stupid
     """
     print("X is where you are")
-    row = 0
-    col = 0
-    for rw in world.map:
-        print("\n")
-        for _ in rw:
-            if row == player.y and col == player.x:
-                print("X")
+    for row in range(0, len(world.map)):
+        print()
+        for num in range(0, len(world.map[0])):
+            if player.x == num and player.y == row:
+                print(" X  ", end="")
+            elif len(str(world.map[row][num])) == 2:
+                print(str(world.map[row][num]) + "  ", end="")
             else:
-                print(world.map[row][col])
-            col += 1
-        row += 1
+                print(" " + str(world.map[row][num]) + "  ", end="")
+    print()
+
 
 
 def handle_trade(world: World, player: Player, item: Item):
