@@ -19,7 +19,7 @@ This file is Copyright (c) 2024 CSC111 Teaching Team
 """
 
 # Note: You may add in other import statements here as needed
-from game_data import World, Item, Location, Player
+from game_data import World, Item, PuzzleItem, TradeItem, Location, Player
 
 # Note: You may add helper functions, classes, etc. here as needed
 
@@ -36,64 +36,120 @@ def reverse_movement(player, last_choice):
         player.x += 1  # Move back east
 
 
-def handle_action(world, player, choice):
+def handle_action(world, player, chc):
     """Handles the players choices"""
     # Extract the current location of the player
-    location = world.get_location(p.x, p.y)
-
-    if choice == "look":
+    loc = world.get_location(player.x, player.y)
+    if chc == "look":
         # Display the full description of the location
-        print(location.f_desc)
-    elif choice == "inventory":
+        print(loc.f_desc)
+    elif chc == "inventory":
         # Display the player's inventory
         print("Inventory:", player.inventory)
-    elif choice == "score":
+    elif chc == "score":
         # Display the player's score
-        # Assuming 'score' is an attribute of Player class
         print(f"Score: {player.points}")
-    elif choice == "back":
+    elif chc == "map":
+        # Display the player's score
+        map_maker(world, player)
+    elif chc == "pick-up item":
+        # Player picks up item and item is removed from location
+        print("What item do you want to pick up?")
+        pick_item = input("item to be picked up: ")
+        if pick_item in w.items and world.items[pick_item] in loc.items:
+            if world.items[pick_item] is PuzzleItem and world.items[pick_item].start_position == loc:
+                handle_puzzle(world, player, world.items[pick_item])
+            else:
+                player.inventory.append(pick_item)
+                loc.items.remove(world.items[pick_item])
+        else:
+            print("that item is not in the room or is not an item")
+    elif chc == "drop item":
+        # Player drops the item and item is now located within new location
+        print("What item do you want to drop?")
+        drop_item = input("item wished to be dropped: ")
+        if drop_item in player.inventory:
+            player.inventory.remove(drop_item)
+            loc.items.append(world.items[drop_item])
+        else:
+            print("you do not have that item in your inventory")
+    elif chc == "use item":
+        # Player selects item to use
+        print("What item do you want to use")
+        use_item = input("item wished to be use: ")
+        if use_item in player.inventory:
+            handle_trade(world, player, world.items[use_item])
+        else:
+            print("you do not have that item, or it does not exist")
+    elif chc == "quit":
+        # Exit the game loop
+        p.victory = False
+        print("Quitting the game.")
+    elif chc == "back":
         # Exit the game loop
         print(".")
-    elif choice == "quit":
-        # Exit the game loop
-        print("Quitting the game.")
-        player.victory = True
     else:
         print("Non-valid input, returning to menu")
-    # Add more actions as needed based on your game design
-# Note: You may modify the code below as needed; the following starter template are just suggestions
 
 
-def handle_trade(world, player, location):
-    for item in location.items:
-        if item.trade_requirement and item.trade_requirement in player.inventory:
-            print(f"You can trade your {item.trade_requirement} for {item.name}. Do you want to trade? (yes/no)")
-            choice = input("> ").lower()
-            if choice == "yes":
-                player.inventory.remove(item.trade_requirement)
-                player.inventory.append(item.name)
-                print(f"You traded your {item.trade_requirement} for {item.name}.")
-                break  # Assuming one trade per location visit
+def map_maker(world, player):
+    """
+        stupid
+    """
+    print("X is where you are")
+    for row in world.map:
+        print("\n")
+        for col in row:
+            if row == player.y and col == player.x:
+                print("X")
+            else:
+                print(world.map[row][col])
 
 
-def handle_puzzle(player, location):
-    if location.puzzle_question:
-        print(location.puzzle_question)
-        answer = input("Answer: ")
-        if answer.lower() == location.puzzle_answer.lower():
-            print("Correct! You solved the puzzle.")
-            if location.puzzle_reward:
-                player.inventory.append(location.puzzle_reward)
-                print(f"You received {location.puzzle_reward}.")
+def handle_trade(world, player, item: Item):
+    """
+        stupid
+    """
+    loc = world.get_location(player.x, player.y)
+    for items in loc.items:
+        if items is TradeItem and item.end == loc and items.trade_key == item.name:
+            print(f"You used the {item} successfully! You {items.trade_line}")
+            player.inventory.remove(item)
+            player.inventory.append(items)
+            player.points += item.target_points
         else:
-            print("That's not correct. Maybe try again later.")
+            print("That item has no use or cannot be used here")
+
+
+def handle_puzzle(world, player, puzzle: PuzzleItem):
+    """
+     stupid
+    """
+    loc = world.get_location(player.x, player.y)
+    correct = False
+    quits = False
+    while correct and quits and puzzle.solved is False:
+        print(f"To pick up the item you must pass a Puzzle!\nthe question is {puzzle.puzzle_q}")
+        answer = input("Answer here: ")
+        if answer == puzzle.puzzle_a:
+            print(f"Correct!!! you picked up the {puzzle.name}")
+            player.points += puzzle.target_points
+            correct = True
+            puzzle.solved = True
+        elif answer == "quit":
+            quits = True
+        else:
+            print("Incorrect ;w;, Try again or enter 'quit' to quit trying and return")
+    if puzzle.solved is True:
+        player.inventory.append(puzzle)
+        loc.items.remove(world.items[puzzle])
 
 
 if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
     p = Player(1, 1)  # set starting location of player; you may change the x, y coordinates here as appropriate
 
-    menu = ["look", "inventory", "score", "quit", "back"]
+    menu = ["look", "inventory", "score", "map", "use item", "pick-up item", "drop item", "quit", "back"]
     counter = 0
     choice = ""
     while not p.victory and counter <= 80:
@@ -145,14 +201,3 @@ if __name__ == "__main__":
                 (w.get_location(p.x, p.y) == 16)):
             print("You did it! You reached the exam on time and did AMAZING!")
             p.victory = True
-
-        #  TODO: CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON THE PLAYER'S CHOICE
-        #  REMEMBER: the location = w.get_location(p.x, p.y) at the top of this loop will update the location if
-        #  the choice the player made was just a movement, so only updating player's position is enough to change the
-        #  location to the next appropriate location
-        #  Possibilities:
-        #  A helper function such as do_action(w, p, location, choice)
-        #  OR A method in World class w.do_action(p, location, choice)
-        #  OR Check what type of action it is, then modify only player or location accordingly
-        #  OR Method in Player class for move or updating inventory
-        #  OR Method in Location class for updating location item info, or other location data etc....
