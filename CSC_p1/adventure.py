@@ -97,17 +97,18 @@ def map_maker(world: World, player: Player):
     """
         Prints out the map with the player's position marked by an 'X'.
     """
-    print("X is where you are")
-    for row in range(0, len(world.map)):
-        print()
-        for num in range(0, len(world.map[0])):
-            if player.x == num and player.y == row:
-                print(" X  ", end="")
-            elif len(str(world.map[row][num])) == 2:
-                print(str(world.map[row][num]) + "  ", end="")
-            else:
-                print(" " + str(world.map[row][num]) + "  ", end="")
-    print()
+    print(world.items)
+    # print("X is where you are")
+    # for row in range(0, len(world.map)):
+    #     print()
+    #     for num in range(0, len(world.map[0])):
+    #         if player.x == num and player.y == row:
+    #             print(" X  ", end="")
+    #         elif len(str(world.map[row][num])) == 2:
+    #             print(str(world.map[row][num]) + "  ", end="")
+    #         else:
+    #             print(" " + str(world.map[row][num]) + "  ", end="")
+    # print()
 
 
 def handle_trade(world: World, player: Player, item: Item):
