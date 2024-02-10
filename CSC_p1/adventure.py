@@ -210,6 +210,6 @@ if __name__ == "__main__":
         counter += 1
 
         if (('Cheat Sheet' in p.inventory and 'Lucky Pencil' in p.inventory and 'TCard' in p.inventory) and
-                (w.get_location(p.x, p.y) == 16)):
+                (w.get_location(p.x, p.y).map_spot == 16)):
             print("You did it! You reached the exam on time and did AMAZING!")
             p.victory = True
