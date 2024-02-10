@@ -33,7 +33,7 @@ LOCATION 4
 15
 south west
 You entered the locked classroom.
-you unlocked the classroom. You don't believe it! It seems like you can see your Tcard on one of the desks.
+you unlocked the classroom using the key. You don't believe it! It seems like you can see your Tcard on one of the desks.
 One of your friends stole it from you as a joke. They are not funny. At all!
 Items in room: TCard
 END

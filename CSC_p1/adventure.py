@@ -76,7 +76,7 @@ def handle_action(world: World, player: Player, chc: str):
     elif chc == "use item":
         # Player selects item to use
         print("What item do you want to use")
-        use_item = input("item wished to be use: ")
+        use_item = input("item wished to be used: ")
         if use_item in player.inventory:
             handle_trade(world, player, world.items[use_item])
         else:
@@ -115,14 +115,14 @@ def handle_trade(world: World, player: Player, item: Item):
         stupid
     """
     loc = world.get_location(player.x, player.y)
-    for items in loc.items:
-        if items is TradeItem and item.end == loc and items.trade_key == item.name:
-            print(f"You used the {item} successfully! You {items.trade_line}")
+    if item is TradeItem and item.end == loc:
+        if item.name == "IPad":
+            player.inventory.append(w.items["Cheat Sheet"])
+            print(f"You used the {item} successfully! You {w.items['Cheat Sheet'].trade_line}")
             player.inventory.remove(item)
-            player.inventory.append(items)
             player.points += item.target_points
-        else:
-            print("That item has no use or cannot be used here")
+    else:
+        print("That item has no use or cannot be used here")
 
 
 def handle_puzzle(world: World, player: Player, puzzle):
@@ -165,6 +165,8 @@ if __name__ == "__main__":
                 reverse_movement(p, choice)
                 continue
             else:
+                if required_item == "Key":
+                    p.inventory.remove("Key")
                 # Allowed to enter, handle as normal location
                 pass  # This can be replaced with the normal handling code for entering a location
 
