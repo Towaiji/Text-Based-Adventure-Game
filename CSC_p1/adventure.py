@@ -75,6 +75,7 @@ def handle_action(world: World, player: Player, chc: str):
         if drop_item in player.inventory:
             player.inventory.remove(drop_item)
             loc.items.append(world.items[drop_item])
+            print(f"you dropped the {drop_item}")
         else:
             print("you do not have that item in your inventory")
     elif chc == "use item":
