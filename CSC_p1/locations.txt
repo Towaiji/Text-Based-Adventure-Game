@@ -15,7 +15,7 @@ END
 LOCATION 2
 5
 east
-You are in the Bathroom. a person has your lucky pencil but wants chocolate in return, why?
+You are in the Bathroom.
 You are in the Bathroom. It somehow does not smell bad today and for that you are thankful. There's a person who HAS YOUR LUCKY PENCIL?
 He wants something in return though, he wants a sweet snack.
 END
