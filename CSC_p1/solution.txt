@@ -1,35 +1,49 @@
 go north
 [menu]
+pick-up item
+Key
 69
 go south
 go east
-look
-go west
+[menu]
+pick-up item
+TCard
 go south
 go east
 go east
-go east
-go east
 go south
-look
+[menu]
+pick-up item
+IPad
 1827
 go north
 go west
 go west
 go west
-go west
 go south
 go south
-look
+go south
+[menu]
+use item
+IPad
 go north
 go east
 go east
-look
+[menu]
+pick-up item
+KitKat
 xbhjr
 go west
 go west
 go north
 go north
+go north
+go west
+[menu]
+use item
+KitKat
+go east
+go south
 go east
 go east
 go east
