@@ -111,8 +111,8 @@ END
 LOCATION 14
 10
 north
-This is your res. Almost all your belongings are here.
-This is your res. All your belongings are here. Well not all of them since you're not tidy.
+This is your dorm. Almost all your belongings are here.
+This is your dorm. All your belongings are here. Well not all of them since you're not tidy.
 [Ipad]
 END
 
@@ -131,8 +131,8 @@ This is it. The exam Center. If you are finally ready, Good Luck! If you aren't,
 END
 
 LOCATION 17
--15
+5
 west south
-Deadend.
-Deadend, turn back and continue walking
+you are around the street.
+you are around the street. south is your dorm room.
 END

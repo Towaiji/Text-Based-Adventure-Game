@@ -1,1 +1,37 @@
-
+go north
+look
+69
+go south
+go east
+look
+go west
+go south
+go east
+go east
+go east
+go east
+go south
+look
+1827
+go north
+go west
+go west
+go west
+go west
+go south
+go south
+look
+go north
+go east
+go east
+look
+xbhjr
+go west
+go west
+go north
+go north
+go east
+go east
+go east
+go north
+go north
